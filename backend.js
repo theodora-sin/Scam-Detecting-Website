@@ -23,7 +23,6 @@ class ScamDetectionApp {
     }
 
     setupNavigation() {
-        // Navigation event listeners
         document.querySelectorAll('[data-screen]').forEach(element => {
             element.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -124,17 +123,15 @@ class ScamDetectionApp {
     }
 }
 
-// Global app instance
 let app;
 
-// Initialize the application when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Initializing Scam Detection Application...');
     app = new ScamDetectionApp();
-    
-    // Make app globally accessible for debugging
+
     window.app = app;
     
     console.log('Application ready!');
 });
+
 
