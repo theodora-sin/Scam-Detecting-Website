@@ -93,7 +93,7 @@
 
 body {
     font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(120deg, #0ff1ce 0%, #3700ff 50%, #ff0080 100%);
+    background: linear-gradient(120deg, #404343 0%, #49484b 50%, #151515 100%);
     color: #fff ;
     line-height: 1.6;
 }
@@ -396,3 +396,4 @@ textarea {
         align-items: flex-start;
     }
 }
+
