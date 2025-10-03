@@ -399,26 +399,26 @@ textarea {
         align-items: flex-start;
     }
 body {
-    font-size: 1.4rem !important;
+    font-size: 1.4rem ;
 }
 
 .section-title, h1, h2, h3, h4 {
-    font-size: 2.5rem !important;
+    font-size: 2.5rem ;
     font-weight: 700;
 }
 
 .card-title {
-    font-size: 2rem !important;
+    font-size: 2rem ;
     font-weight: 700;
 }
 
 .card, .scam-type-card, .history-item {
-    font-size: 1.3rem !important;
+    font-size: 1.3rem ;
 }
 
 .btn, button, input[type="submit"] {
-    padding: 1.2rem 2.2rem !important;
-    border-radius: 8px !important;
-    font-size: 1.5rem !important;
+    padding: 4.5rem 3rem ;
+    border-radius: 10px ;
+    font-size: 2.5rem ;
 }
 }
