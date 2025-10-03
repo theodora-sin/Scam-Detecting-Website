@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Scam Guard  </title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav id="main-nav">
+        <div class="container">
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="logo.png" alt="Scam Detection Logo" style="height:40px;vertical-align:middle;margin-right:10px;">
+                    <span style="font-weight:800;font-size:1.3rem;vertical-align:middle;letter-spacing:1px;">Scam Detection</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#" class="nav-link active" data-screen="start">🏠 Home</a></li>
+                    <li><a href="#" class="nav-link" data-screen="main">🔍 Analyze</a></li>
+                    <li><a href="#" class="nav-link" data-screen="education">📚 Education</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Start Screen -->
+        <section id="start-screen" class="screen active">
+            <h1 class="section-title">Scam Guard </h1>
+            
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">Quick Analysis</h2>
+                </div>
+                <form id="quick-analysis-form">
+                        <label for="quick-content">Content to Analyze:</label>
+                        <textarea name="content" id="quick-content" placeholder="Enter URL to analyze..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">🔍 Analyze Content</button>
+                </form>
+                
+                <div id="quick-results" class="results-container" style="display:none;"></div>
+            </div>
+
+            <!-- Feature Cards -->
+            <div class="grid grid-3">
+                <div class="card">
+                    <h3>⚡ Fast Analysis</h3>
+                    <p>Get instant results on URLs with detailed risk assessments.</p>
+                </div>
+                <div class="card">
+                    <h3>📈 Learning</h3>
+                    <p>Learn about different scam types and how to protect yourself from online threats.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Analysis Screen -->
+        <section id="main-screen" class="screen">
+            <h1 class="section-title">🔍 Detailed Analysis</h1>
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">Content Analysis</h2>
+                </div>
+                <div class="form-group">
+                    <label for="analysis-content">Content to Analyze:</label>
+                    <textarea name="content" id="analysis-content" placeholder="Enter to analyze..." rows="6"></textarea>
+                </div>
+                <form id="analysis-form">
+                    <button type="submit" class="btn btn-primary">Perform Analysis</button>
+                </form>
+                <div id="analysis-results" class="results-container" style="display:none;"></div>
+            </div>
+            <!-- Analysis History -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Recent Analyses</h3>
+                    <button class="btn btn-secondary" id="clear-history-btn">🗑️ Clear History</button>
+                </div>
+                <div id="analysis-history"></div>
+            </div>
+        </section>
+
+        <!-- Education Screen -->
+        <section id="education-screen" class="screen">
+            <h1 class="section-title">📚 Scam Education & Prevention</h1>
+            
+            <!-- Protection Tips -->
+            <div class="grid grid-2">
+                <div class="card">
+                    <h3>🛡️ Protection Tips</h3>
+                    <div id="protection-tips"></div>
+                </div>
+                
+                <div class="card">
+                    <h3>🚩 Red Flags</h3>
+                    <div id="red-flags"></div>
+                </div>
+            </div>
+            
+            <!-- Scam Types -->
+            <div class="card">
+                <h3>🗂️ Common Scam Types</h3>
+                <div id="scam-types-list"></div>
+            </div>
+            
+            <!-- Reporting Resources -->
+            <div class="card">
+                <h3>📞 Reporting Resources</h3>
+                <div id="reporting-resources"></div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Alert Container -->
+    <div id="alert-container"></div>
+
+    <!-- JavaScript Files -->
+    <script src="backend.js"></script>
+    <script src="config.js"></script>
+    <script src="encryption.js"></script>
+    <script src="routes.js"></script>
+    <script src="startscreen.js"></script>
+    <script src="mainscreen.js"></script>
+    <script src="education.js"></script>
+
+    <!-- Picture Files -->
+    <script src="logo.png"></script>
+    
+</body>
+</html>
