@@ -1,4 +1,3 @@
-// Start Screen Controller - Based on your original startscreen_1755844201663.js
 class StartScreen {
     constructor(app) {
         this.app = app;
@@ -30,13 +29,6 @@ class StartScreen {
             this.app.showAlert('Please provide content to analyze.', 'warning');
             return;
         }
-
-        // Only allow URL analysis for now
-        if (contentType !== 'url') {
-            this.app.showAlert('Only URL analysis is currently supported.', 'warning');
-            return;
-        }
-
         this.performAnalysis(contentType, content, form, 'quick-results');
     }
 
@@ -49,7 +41,6 @@ class StartScreen {
         }
 
         try {
-            // Simulate scanning delay like original
             await new Promise(resolve => setTimeout(resolve, 2000));
             
             // Perform analysis
