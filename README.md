@@ -11,6 +11,7 @@ project/
 ├─ backend/
 │  ├─ backend.js (controlling the whole website)
 │  ├─ routes.js (the scam analysis engine, the score systems and history storage)
+│  ├─ static.js (alert system)
 └─ frontend/
    ├─ index.html 
    ├─ style.css
