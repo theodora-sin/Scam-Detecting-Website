@@ -86,12 +86,7 @@ class MainScreen {
                 <h3>📊 Detailed Risk Assessment</h3>
                 <p><strong>Risk Level:</strong> ${(analysis.risk_level || analysis.level || 'unknown').toUpperCase()}</p>
                 <p><strong>Risk Score:</strong> ${analysis.risk_score || analysis.score || 0}/100</p>
-                <p><strong>Indicators Detected:</strong> ${(analysis.detected_patterns || analysis.factors || []).length > 0 ? (analysis.detected_patterns || analysis.factors).join(', ') : 'None'}</p>    
-                <p><strong>Analyzed Content:</strong></p>                
-            </div>
-
-            <div class="card">
-                <h4>📋 Complete Analysis Report</h4>
+                <p><strong>Indicators Detected:</strong> ${(analysis.detected_patterns || analysis.factors || []).length > 0 ? (analysis.detected_patterns || analysis.factors).join(', ') : 'None'}</p>                
                 <p><strong>Content Type:</strong> ${(analysis.content_type || 'unknown').toUpperCase()}</p>
                 <p><strong>Analyzed Content:</strong></p>
                 <div style="background: #f8f9fa; color: #111; padding: 1rem; border-radius: 5px; margin: 1rem 0;">
@@ -183,3 +178,4 @@ class MainScreen {
     }
 
 }
+
