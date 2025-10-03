@@ -1,141 +1,424 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Scam Guard  </title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <nav id="main-nav">
-        <div class="container">
-            <div class="nav-container">
-                <div class="logo">
-                    <img src="logo.png" alt="Scam Detection Logo" style="height:40px;vertical-align:middle;margin-right:10px;">
-                    <span style="font-weight:800;font-size:1.3rem;vertical-align:middle;letter-spacing:1px;">Scam Detection</span>
-                </div>
-                <ul class="nav-links">
-                    <li><a href="#" class="nav-link active" data-screen="start">🏠 Home</a></li>
-                    <li><a href="#" class="nav-link" data-screen="main">🔍 Analyze</a></li>
-                    <li><a href="#" class="nav-link" data-screen="education">📚 Education</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
-    <!-- Main Container -->
-    <div class="container">
-        <!-- Start Screen -->
-        <section id="start-screen" class="screen active">
-            <h1 class="section-title">Scam Guard </h1>
-            
-            <div class="card">
-                <div class="card-header">
-                    <h2 class="card-title">Quick Analysis</h2>
-                </div>
-                <form id="quick-analysis-form">
-                        <label for="quick-content">Content to Analyze:</label>
-                        <textarea name="content" id="quick-content" placeholder="Enter URL to analyze..."></textarea>
-                    </div>
-                    
-                    <button type="submit" class="btn btn-primary">🔍 Analyze Content</button>
-                </form>
-                
-                <div id="quick-results" class="results-container" style="display:none;"></div>
-            </div>
+:root {
+  --background: hsl(0 0% 0%);
+  --foreground: hsl(0 0% 100%);
+  --card: hsl(0 0% 6.67%);
+  --card-foreground: hsl(0 0% 100%);
+  --popover: hsl(0 0% 0%);
+  --popover-foreground: hsl(0 0% 100%);
+  --primary: hsl(180 100% 50%);
+  --primary-foreground: hsl(0 0% 0%);
+  --secondary: hsl(0 0% 10.2%);
+  --secondary-foreground: hsl(0 0% 100%);
+  --muted: hsl(0 0% 10.2%);
+  --muted-foreground: hsl(0 0% 64.9%);
+  --accent: hsl(0 0% 10.2%);
+  --accent-foreground: hsl(0 0% 100%);
+  --destructive: hsl(0 85% 60%);
+  --destructive-foreground: hsl(0 0% 100%);
+  --border: hsl(0 0% 14.9%);
+  --input: hsl(0 0% 14.9%);
+  --ring: hsl(180 100% 50%);
+  --chart-1: hsl(180 100% 50%);
+  --chart-2: hsl(120 100% 50%);
+  --chart-3: hsl(39 100% 50%);
+  --chart-4: hsl(27 87% 67%);
+  --chart-5: hsl(323 100% 50%);
+  --radius: 0.75rem;
+  --shadow: 0 8px 32px 0 rgba(0,0,0,0.45);
 
-            <!-- Feature Cards -->
-            <div class="grid grid-3">
-                <div class="card">
-                    <h3>🎯 Pattern Detection</h3>
-                    <p>Using common patterns to identify potential scams.</p>
-                </div>
-                <div class="card">
-                    <h3>⚡ Fast Analysis</h3>
-                    <p>Get instant results on URLs with detailed risk assessments.</p>
-                </div>
-                <div class="card">
-                    <h3>📈 Learning</h3>
-                    <p>Learn about different scam types and how to protect yourself from online threats.</p>
-                </div>
-            </div>
-        </section>
+  /* Ultra-dark gradient colors */
+  --ultra-dark: hsl(0 0% 0%);
+  --deep-charcoal: hsl(0 0% 6.67%);
+  --dark-purple: hsl(260 100% 10%);
+  --dark-blue: hsl(210 100% 6.67%);
+  --charcoal: hsl(0 0% 10.2%);
+  --neon-cyan: hsl(180 100% 50%);
+  --neon-green: hsl(120 100% 50%);
+  --neon-orange: hsl(24 100% 50%);
+  --electric-blue: hsl(216 100% 50%);
+}
 
-        <!-- Main Analysis Screen -->
-        <section id="main-screen" class="screen">
-            <h1 class="section-title">🔍 Detailed Analysis</h1>
-            
-            <div class="card">
-                <div class="card-header">
-                    <h2 class="card-title">Content Analysis</h2>
-                </div>
-                    
-                    <div class="form-group">
-                        <label for="analysis-content">Content to Analyze:</label>
-                        <textarea name="content" id="analysis-content" placeholder="Enter to analyze..." rows="6"></textarea>
-                    </div>
-                    <form id="analysis-form">
-                    <button type="submit" class="btn btn-primary">Perform Analysis</button></form>
-                </form>
-                
-                <div id="analysis-results" class="results-container" style="display:none;"></div>
-            </div>
-            <!-- Analysis History -->
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">Recent Analyses</h3>
-                    <button class="btn btn-secondary" id="clear-history-btn">🗑️ Clear History</button>
-                </div>
-                <div id="analysis-history"></div>
-            </div>
-        </section>
+.dark {
+  --background: hsl(0 0% 0%);
+  --foreground: hsl(0 0% 100%);
+  --card: hsl(0 0% 6.67%);
+  --card-foreground: hsl(0 0% 100%);
+  --popover: hsl(0 0% 0%);
+  --popover-foreground: hsl(0 0% 100%);
+  --primary: hsl(180 100% 50%);
+  --primary-foreground: hsl(0 0% 0%);
+  --secondary: hsl(0 0% 10.2%);
+  --secondary-foreground: hsl(0 0% 100%);
+  --muted: hsl(0 0% 10.2%);
+  --muted-foreground: hsl(0 0% 64.9%);
+  --accent: hsl(0 0% 10.2%);
+  --accent-foreground: hsl(0 0% 100%);
+  --destructive: hsl(0 85% 60%);
+  --destructive-foreground: hsl(0 0% 100%);
+  --border: hsl(0 0% 14.9%);
+  --input: hsl(0 0% 14.9%);
+  --ring: hsl(180 100% 50%);
+}
+.logo img {
+    background: transparent ;
+    border-radius: 50%;
+    padding: 0;
+    box-shadow: none ;
+    width: 60px;
+    height: 60px ;
+    max-width: 100%;
+    max-height: 100%;
+    display: inline-block;
+    vertical-align: middle;
+}
+/* Remove all borders from all elements to eliminate any remaining lines */
+* {
+    border: none ;
+    outline: none ;
+    box-shadow: none ;
+}
+/* Make nav and logo area transparent, no background */
+.nav-container, .logo {
+    background: none;
+    box-shadow: none ;
+    border: none ;
+}
 
-        <!-- Education Screen -->
-        <section id="education-screen" class="screen">
-            <h1 class="section-title">📚 Scam Education & Prevention</h1>
-            
-            <!-- Protection Tips -->
-            <div class="grid grid-2">
-                <div class="card">
-                    <h3>🛡️ Protection Tips</h3>
-                    <div id="protection-tips"></div>
-                </div>
-                
-                <div class="card">
-                    <h3>🚩 Red Flags</h3>
-                    <div id="red-flags"></div>
-                </div>
-            </div>
-            
-            <!-- Scam Types -->
-            <div class="card">
-                <h3>🗂️ Common Scam Types</h3>
-                <div id="scam-types-list"></div>
-            </div>
-            
-            <!-- Reporting Resources -->
-            <div class="card">
-                <h3>📞 Reporting Resources</h3>
-                <div id="reporting-resources"></div>
-            </div>
-        </section>
-    </div>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    <!-- Alert Container -->
-    <div id="alert-container"></div>
+body {
+    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(120deg, #404343 0%, #49484b 50%, #151515 100%);
+    color: #fff ;
+    line-height: 1.6;
+}
 
-    <!-- JavaScript Files -->
-    <script src="backend.js"></script>
-    <script src="config.js"></script>
-    <script src="encryption.js"></script>
-    <script src="routes.js"></script>
-    <script src="startscreen.js"></script>
-    <script src="mainscreen.js"></script>
-    <script src="education.js"></script>
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
 
-    <!-- Picture Files -->
-    <script src="logo.png"></script>
-    
-</body>
-</html>
+/* Navigation */
+nav {
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
 
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+}
+
+.logo {
+    font-size: 32px;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--dark-text);
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    background: var(--primary-color);
+    color: white;
+}
+
+/* Screens */
+.screen {
+    display: none;
+    min-height: calc(100vh - 80px);
+    padding: 2rem 0;
+}
+
+.screen.active {
+    display: block;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #fff ;
+}
+
+/* Cards */
+.card {
+    background: none ;
+    color: #fff ;
+    box-shadow: none ;
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.card-title {
+    margin: 0;
+    color: var(--dark-text);
+}
+
+/* Forms */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+input[type="text"],
+input[type="email"],
+textarea,
+select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-size: 32px;
+    transition: border-color 0.3s ease;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+/* Results */
+.results-container {
+    margin-top: 2rem;
+    display: none;
+}
+
+.risk-assessment {
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    border-left: 4px solid;
+}
+
+.risk-high {
+    background: #f8d7da;
+    border-color: var(--danger-color);
+    color: #721c24;
+}
+
+.risk-medium {
+    background: #fff3cd;
+    border-color: var(--warning-color);
+    color: #856404;
+}
+
+.risk-low {
+    background: #d4edda;
+    border-color: var(--success-color);
+    color: #155724;
+}
+
+/* Grid */
+.grid {
+    display: grid;
+    gap: 2rem;
+}
+
+.grid-2 {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.grid-3 {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+/* Search */
+.search-container {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.search-input {
+    padding-left: 1rem;
+}
+
+/* Loading */
+.loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.spinner {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Alerts */
+.alert {
+    padding: 1rem;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    position: fixed;
+    top: 100px;
+    right: 20px;
+    max-width: 400px;
+    z-index: 1000;
+    box-shadow: var(--shadow);
+}
+
+.alert-success {
+    background: #d4edda;
+    border-color: #c3e6cb;
+    color: #155724;
+}
+
+.alert-danger {
+    background: #f8d7da;
+    border-color: #f5c6cb;
+    color: #721c24;
+}
+
+.alert-warning {
+    background: #fff3cd;
+    border-color: #ffeaa7;
+    color: #856404;
+}
+
+/* Education Content */
+.tip-card {
+    background: #e8f5e8;
+    border-left: 4px solid var(--success-color);
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    color: #111 !important;
+}
+
+.warning-card {
+    background: #fff3cd;
+    border-left: 4px solid var(--warning-color);
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    color: #111 !important;
+}
+
+.scam-type-card {
+    background: none ;
+    color: #fff ;
+    box-shadow: none ;
+}
+
+.history-item {
+    background: none ;
+    color: #fff ;
+    box-shadow: none ;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.history-item:hover {
+    box-shadow: var(--shadow);
+}
+
+.history-meta {
+    font-size: 0.875rem;
+    color: #6c757d;
+    margin-top: 0.5rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .nav-links {
+        gap: 1rem;
+    }
+
+    .nav-link {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.8rem;
+    }
+
+    .radio-group {
+        flex-direction: column;
+    }
+
+    .grid-2,
+    .grid-3 {
+        grid-template-columns: 1fr;
+    }
+
+    .card-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+body {
+    font-size: 1.4rem !important;
+}
+
+.section-title, h1, h2, h3, h4 {
+    font-size: 2.5rem !important;
+    font-weight: 700;
+}
+
+.card-title {
+    font-size: 2rem !important;
+    font-weight: 700;
+}
+
+.card, .scam-type-card, .history-item {
+    font-size: 1.3rem !important;
+}
+
+.btn, button, input[type="submit"] {
+    padding: 1.2rem 2.2rem !important;
+    border-radius: 8px !important;
+    font-size: 1.5rem !important;
+}
+}
