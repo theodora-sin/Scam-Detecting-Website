@@ -94,7 +94,7 @@ class MainScreen {
                 <h4>📋 Complete Analysis Report</h4>
                 <p><strong>Content Type:</strong> ${(analysis.content_type || 'unknown').toUpperCase()}</p>
                 <p><strong>Analyzed Content:</strong></p>
-                <div style="background: #f8f9fa; padding: 1rem; border-radius: 5px; margin: 1rem 0;">
+                <div style="background: #f8f9fa; color: #111; padding: 1rem; border-radius: 5px; margin: 1rem 0;">
                     <code>${this.app.escapeHtml(analysis.content || 'No content')}</code>
                 </div>
 
@@ -181,4 +181,5 @@ class MainScreen {
         // Called when main screen becomes inactive
         console.log('Main screen deactivated');
     }
+
 }
