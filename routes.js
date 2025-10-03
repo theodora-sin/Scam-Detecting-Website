@@ -7,29 +7,12 @@ class ScamAnalyzer {
             { pattern: /(paypal|amazon|microsoft|apple|google).*-.*\.com/i, description: 'Suspicious domain mimicking legitimate service', score: 40 },
             { pattern: /[a-z0-9]{8,}\.(tk|ml|ga|cf)/i, description: 'Free domain hosting', score: 25 },
             { pattern: /(secure|verify|update|confirm).*account/i, description: 'Account security keywords', score: 15 },
-            { pattern: /\d{4,}-\d{4,}-\d{4,}/, description: 'Suspicious subdomain pattern', score: 20 }
-        ];
-        
-        this.emailPatterns = [
-            { pattern: /urgent|immediate|act now|limited time|expires today/i, description: 'Urgency tactics', score: 25 },
-            { pattern: /verify your account|suspend|locked|frozen/i, description: 'Account threat language', score: 30 },
-            { pattern: /click here|download now|claim your prize/i, description: 'Suspicious call-to-action', score: 20 },
-            { pattern: /winner|congratulations|lottery|prize/i, description: 'Prize/lottery scam language', score: 35 },
-            { pattern: /wire transfer|western union|moneygram|bitcoin/i, description: 'Unusual payment methods', score: 40 },
-            { pattern: /dear (customer|sir|madam)/i, description: 'Generic greeting', score: 15 },
-            { pattern: /[A-Z]{3,}\s+[A-Z]{3,}\s+[A-Z]{3,}/, description: 'Excessive capitalization', score: 10 },
-            { pattern: /(\$|€|£)\s*\d{4,}/, description: 'Large money amounts', score: 20 },
-            { pattern: /@[a-z0-9-]+\.(tk|ml|ga|cf|biz)/i, description: 'Suspicious sender domain', score: 30 }
-        ];
-        
-        this.messagePatterns = [
-            { pattern: /romance|love|heart|marry|relationship/i, description: 'Romance scam language', score: 25 },
-            { pattern: /investment|profit|return|guarantee|double/i, description: 'Investment scam language', score: 30 },
-            { pattern: /tech support|computer|virus|infected|microsoft/i, description: 'Tech support scam', score: 35 },
-            { pattern: /social security|ssn|government|irs|arrest/i, description: 'Government impersonation', score: 40 },
-            { pattern: /emergency|hospital|accident|help/i, description: 'Emergency scam tactics', score: 25 },
-            { pattern: /inheritance|beneficiary|estate|attorney/i, description: 'Inheritance scam', score: 35 },
-            { pattern: /(whatsapp|telegram)\s*(chat|message|contact)/i, description: 'Suspicious communication platform', score: 20 }
+            { pattern: /\d{4,}-\d{4,}-\d{4,}/, description: 'Suspicious subdomain pattern', score: 20 },
+            { pattern: /https?:\/\/[^\/]*\.(ru|cn|kp|ua|bg|pl|ro|cz|sk|hu|lt|lv|ee)\//i, description: 'High-risk country domain', score: 30 },
+            { pattern: /malicious|phishing|scam/i, description: 'Known scam indicators', score: 50 },
+            { pattern: /fake|fraud|deceptive/i, description: 'Fraudulent content indicators', score: 45 },
+            { pattern: /urgent|important|act now/i, description: 'High-pressure tactics', score: 40 },
+            { pattern: /click here|download now|free gift/i, description: 'Common scam phrases', score: 35 }
         ];
         
         this.legitimatePatterns = [
@@ -49,10 +32,6 @@ class ScamAnalyzer {
             switch (contentType.toLowerCase()) {
                 case 'url':
                     return this._analyzeUrl(content);
-                case 'email':
-                    return this._analyzeEmail(content);
-                case 'message':
-                    return this._analyzeMessage(content);
                 default:
                     throw new Error(`Unsupported content type: ${contentType}`);
             }
@@ -93,25 +72,6 @@ class ScamAnalyzer {
         return this._formatResult(riskScore, detectedPatterns, url, 'URL');
     }
 
-    _analyzeEmail(emailContent) {
-        let riskScore = 0;
-        const detectedPatterns = [];
-        
-        riskScore += this._checkPatterns(emailContent, this.emailPatterns, detectedPatterns);
-        riskScore += this._checkPatterns(emailContent, this.legitimatePatterns, []);
-        
-        return this._formatResult(riskScore, detectedPatterns, emailContent, 'Email');
-    }
-
-    _analyzeMessage(message) {
-        let riskScore = 0;
-        const detectedPatterns = [];
-        
-        riskScore += this._checkPatterns(message, this.messagePatterns, detectedPatterns);
-        riskScore += this._checkPatterns(message, this.legitimatePatterns, []);
-        
-        return this._formatResult(riskScore, detectedPatterns, message, 'Message');
-    }
 
     _checkPatterns(content, patterns, detectedPatterns) {
         let score = 0;
@@ -174,7 +134,7 @@ class ScamAnalyzer {
 class AnalysisHistory {
     constructor() {
         this.storageKey = 'scamguard_analysis_history';
-        this.maxEntries = 50;
+        this.maxEntries = 10;
     }
 
     addAnalysis(contentType, content, result) {
