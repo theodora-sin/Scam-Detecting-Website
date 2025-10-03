@@ -6,12 +6,7 @@ class EducationScreen {
     }
 
     init() {
-        this.setupEventListeners();
         this.loadEducationContent();
-    }
-
-    setupEventListeners() {
-        // No search bar, so nothing to set up
     }
 
     loadEducationContent() {
@@ -25,16 +20,16 @@ class EducationScreen {
         const tipsContainer = document.getElementById('protection-tips');
         if (!tipsContainer) return;
 
-        // Based on your original practical tips
         const tips = [
-            "Never share personal information via email or phone",
+            "Never share personal information using email or phone",
             "Verify URLs before clicking suspicious links", 
-            "Be skeptical of urgent or time-pressured requests",
             "Be careful about replying to contact numbers or emails",
             "Be cautious of unusual payment methods",
+            "Be wary of unsolicited requests for personal information",
             "Discuss suspicious messages with a trusted person",
-            "Never share bank details, names, or financial information on social platforms",
+            "Never share bank details, names, or financial information on any social platforms",
             "Keep software and browsers updated",
+            "Install antivirus and anti-malware software",
             "Use strong, unique passwords with Two Factor Authentication"
         ];
 
@@ -46,15 +41,11 @@ class EducationScreen {
     loadRedFlags() {
         const redFlagsContainer = document.getElementById('red-flags');
         if (!redFlagsContainer) return;
-
-        // Based on your original focused red flags
         const redFlags = [
             "Look for suspicious keywords",
             "Requests for immediate payment", 
-            "Payments via gift cards or cryptocurrency (e.g., Bitcoin)",
             "Poor grammar, spelling, or punctuation in messages",
             "Unsolicited contact about problems or prizes",
-            "Pressure to keep communication secret",
             "Requests for remote computer access",
             "Too-good-to-be-true offers or guarantees",
             "Urgent threats about account suspension or legal action"
@@ -70,7 +61,6 @@ class EducationScreen {
     }
 
     renderAllScamTypes() {
-        // This function should render all scam types without filtering
         const scamTypesList = document.getElementById('scam-types-list');
         if (!scamTypesList) return;
         const scamTypes = this.getScamTypesData();
@@ -117,8 +107,6 @@ class EducationScreen {
     loadReportingResources() {
         const resourcesContainer = document.getElementById('reporting-resources');
         if (!resourcesContainer) return;
-
-        // Add warning section based on your original content
         const warningSection = `
             <div class="warning-card" style="background: #f8d7da; border-color: #dc3545; color: #721c24; margin-bottom: 2rem;">
                 <h4>⚠️ If you suspect the website is a scam:</h4>
@@ -172,7 +160,7 @@ class EducationScreen {
                 name: "Phishing Email",
                 category: "Identity Theft",
                 description: "Fraudulent emails designed to steal personal information by impersonating legitimate organizations.",
-                warning_signs: "Urgent language, suspicious sender addresses, requests for personal information, poor grammar/spelling, generic greetings",
+                warning_signs: "Urgent language, suspicious sender addresses, requests for personal information, poor grammar or spelling, generic greetings",
                 prevention_tips: "Always verify sender authenticity, check URLs carefully, never provide sensitive information via email, use official websites directly",
                 severity: "high",
             },
@@ -213,7 +201,7 @@ class EducationScreen {
                 category: "Government Impersonation",
                 description: "Scammers impersonate police or tax authorities, threatening arrest or legal action to extort money.",
                 warning_signs: "Unsolicited calls or messages, threats of arrest, demands for immediate payment, requests for personal information",
-                prevention_tips: "Government agencies don’t demand payments over the phone, hang up and verify independently",
+                prevention_tips: "Government agencies don't demand payments over the phone, hang up and verify independently",
                 severity: "high",
             },
             {
@@ -229,7 +217,7 @@ class EducationScreen {
                 category: "Financial Fraud",
                 description: "Notifications claiming you've won a lottery or prize, requiring payment of fees or taxes to claim.",
                 warning_signs: "Unexpected prize notifications, requests for upfront fees or taxes, pressure to act quickly, no proof of winning",
-                prevention_tips: "Legitimate lotteries don’t ask for fees, verify through official sources, never send money to claim prizes",
+                prevention_tips: "Legitimate lotteries don't ask for fees, verify through official sources, never send money to claim prizes",
                 severity: "high",
             },
             {
@@ -253,7 +241,7 @@ class EducationScreen {
                 category: "Consumer Fraud",
                 description: "Fake delivery notifications claimng a package is undeliverable or requires payment to release.",
                 warning_signs: "Unexpected delivery notifications, requests for payment or personal information to release a package, links to fake courier websites",
-                prevention_tips: "Check with official courier services directly, don’t click on suspicious links, never pay fees for unknown packages",
+                prevention_tips: "Check with official courier services directly, don't click on suspicious links, never pay fees for unknown packages",
                 severity: "medium",
             },
             {
