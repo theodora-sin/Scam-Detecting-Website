@@ -11,16 +11,7 @@ class EducationScreen {
     }
 
     setupEventListeners() {
-        //Search functionality 
-        const searchInput = document.getElementById('scam-search-input');
-        if (searchInput) {
-            searchInput.addEventListener('input', (e) => {
-                clearTimeout(this.searchTimeout);
-                this.searchTimeout = setTimeout(() => {
-                    this.searchScamTypes(e.target.value);
-                }, 300);
-            });
-        }
+        // No search bar, so nothing to set up
     }
 
     loadEducationContent() {
@@ -38,6 +29,7 @@ class EducationScreen {
         const tips = [
             "Never share personal information via email or phone",
             "Verify URLs before clicking suspicious links", 
+            "Be skeptical of urgent or time-pressured requests",
             "Be careful about replying to contact numbers or emails",
             "Be cautious of unusual payment methods",
             "Discuss suspicious messages with a trusted person",
@@ -75,6 +67,16 @@ class EducationScreen {
 
     loadScamTypes() {
         this.renderAllScamTypes();
+    }
+
+    renderAllScamTypes() {
+        // This function should render all scam types without filtering
+        const scamTypesList = document.getElementById('scam-types-list');
+        if (!scamTypesList) return;
+        const scamTypes = this.getScamTypesData();
+        scamTypesList.innerHTML = scamTypes.map(type =>
+            `<div class="scam-type-card"><h4>${type.name}</h4><p>${type.category}</p><p>${type.warning_signs}</p><p>${type.prevention_tips}</p><p>Severity: ${type.severity.toUpperCase()}</p><p>${type.description}</p><h5>⚠️ Warning Signs:</h5><p>${type.warning_signs}</p><h5>💡 Prevention Tips:</h5><p>${type.prevention_tips}</p><div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #dee2e6;"><small><strong>Severity:</strong> ${type.severity.toUpperCase()}</small></div><p><strong>Description:</strong> ${type.description}</p></div>`
+        ).join('');
     }
 
     searchScamTypes(query) {
@@ -115,6 +117,8 @@ class EducationScreen {
     loadReportingResources() {
         const resourcesContainer = document.getElementById('reporting-resources');
         if (!resourcesContainer) return;
+
+        // Add warning section based on your original content
         const warningSection = `
             <div class="warning-card" style="background: #f8d7da; border-color: #dc3545; color: #721c24; margin-bottom: 2rem;">
                 <h4>⚠️ If you suspect the website is a scam:</h4>
