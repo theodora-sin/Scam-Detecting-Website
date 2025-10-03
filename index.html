@@ -63,14 +63,14 @@
                 <div class="card-header">
                     <h2 class="card-title">Content Analysis</h2>
                 </div>
-                <div class="form-group">
-                    <label for="analysis-content">Content to Analyze:</label>
-                    <textarea name="content" id="analysis-content" placeholder="Enter to analyze..." rows="6"></textarea>
-                </div>
-        <form id="analysis-form">
-            <input type="hidden" name="content_type" value="url">
-            <button type="submit" class="btn btn-primary">Perform Analysis</button>
-        </form>
+                <form id="analysis-form">
+                    <div class="form-group">
+                        <label for="analysis-content">Content to Analyze:</label>
+                        <textarea name="content" id="analysis-content" placeholder="Enter to analyze..." rows="6"></textarea>
+                    </div>
+                    <input type="hidden" name="content_type" value="url">
+                    <button type="submit" class="btn btn-primary">Perform Analysis</button>
+                </form>
                 <div id="analysis-results" class="results-container" style="display:none;"></div>
             </div>
             <!-- Analysis History -->
@@ -131,3 +131,4 @@
     
 </body>
 </html>
+
