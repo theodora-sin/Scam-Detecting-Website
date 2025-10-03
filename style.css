@@ -237,17 +237,14 @@ textarea {
 
 .risk-high {
     border-color: var(--danger-color);
-    color: #f53838;
 }
 
 .risk-medium {
     border-color: var(--warning-color);
-    color: #ffd65a;
 }
 
 .risk-low {
     border-color: var(--success-color);
-    color: #86ffa3;
 }
 
 /* Grid */
@@ -413,6 +410,7 @@ body {
     font-size: 2.5rem ;
 }
 }
+
 
 
 
