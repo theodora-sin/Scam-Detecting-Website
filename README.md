@@ -9,13 +9,10 @@ backend:
 Structure:
 project/
 ├─ backend/
-│  ├─ backend.js
-│  ├─ encryption.js
-│  ├─ routes.js
-│  ├─ config.js
-│  └─ 
+│  ├─ backend.js (controlling the whole website)
+│  ├─ routes.js (the scam analysis engine, the score systems and history storage)
 └─ frontend/
-   ├─ index.html
+   ├─ index.html 
    ├─ style.css
    ├─ startscreen.js    → the home screen (quick analysis screen)
    ├─ mainscreen.js     → the main analysis screen
