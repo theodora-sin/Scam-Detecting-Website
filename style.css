@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
 :root {
   --background: hsl(0 0% 0%);
   --foreground: hsl(0 0% 100%);
@@ -120,7 +121,7 @@ nav {
 }
 
 .logo {
-    font-size: 1.5rem;
+    font-size: 32px;
     font-weight: bold;
     color: var(--primary-color);
 }
@@ -174,7 +175,7 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 1rem;
+    gap: 32px;
     margin-bottom: 1.5rem;
     padding-bottom: 1rem;
     border-bottom: 1px solid var(--border-color);
@@ -204,7 +205,7 @@ select {
     padding: 0.75rem;
     border: 1px solid var(--border-color);
     border-radius: 5px;
-    font-size: 1rem;
+    font-size: 32px;
     transition: border-color 0.3s ease;
 }
 
@@ -332,37 +333,16 @@ textarea {
 
 /* Education Content */
 .tip-card {
+    color: #111;
     background: #e8f5e8;
     border-left: 4px solid var(--success-color);
     padding: 1rem;
     margin-bottom: 1rem;
     border-radius: 5px;
-  body {
-    font-size: 1.4rem !important;
-}
-
-.section-title, h1, h2, h3, h4 {
-    font-size: 2.5rem !important;
-    font-weight: 700;
-}
-
-.card-title {
-    font-size: 2rem !important;
-    font-weight: 700;
-}
-
-.card, .scam-type-card, .history-item {
-    font-size: 1.3rem !important;
-}
-
-.btn, button, input[type="submit"] {
-    padding: 1.2rem 2.2rem !important;
-    border-radius: 8px !important;
-    font-size: 1.5rem !important;
-}
 }
 
 .warning-card {
+    color: #111;
     background: #fff3cd;
     border-left: 4px solid var(--warning-color);
     padding: 1rem;
@@ -418,6 +398,27 @@ textarea {
         flex-direction: column;
         align-items: flex-start;
     }
+body {
+    font-size: 1.4rem !important;
 }
 
+.section-title, h1, h2, h3, h4 {
+    font-size: 2.5rem !important;
+    font-weight: 700;
+}
 
+.card-title {
+    font-size: 2rem !important;
+    font-weight: 700;
+}
+
+.card, .scam-type-card, .history-item {
+    font-size: 1.3rem !important;
+}
+
+.btn, button, input[type="submit"] {
+    padding: 1.2rem 2.2rem !important;
+    border-radius: 8px !important;
+    font-size: 1.5rem !important;
+}
+}
