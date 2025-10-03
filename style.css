@@ -1,6 +1,4 @@
-/* Scam Detection System Styles */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-
 :root {
   --background: hsl(0 0% 0%);
   --foreground: hsl(0 0% 100%);
@@ -62,14 +60,13 @@
   --input: hsl(0 0% 14.9%);
   --ring: hsl(180 100% 50%);
 }
-/* Make logo image always visible on any background */
 .logo img {
-    background: transparent !important;
+    background: transparent ;
     border-radius: 50%;
     padding: 0;
-    box-shadow: none !important;
-    width: 60px !important;
-    height: 60px !important;
+    box-shadow: none ;
+    width: 60px;
+    height: 60px ;
     max-width: 100%;
     max-height: 100%;
     display: inline-block;
@@ -77,15 +74,15 @@
 }
 /* Remove all borders from all elements to eliminate any remaining lines */
 * {
-    border: none !important;
-    outline: none !important;
-    box-shadow: none !important;
+    border: none ;
+    outline: none ;
+    box-shadow: none ;
 }
 /* Make nav and logo area transparent, no background */
 .nav-container, .logo {
-    background: none !important;
-    box-shadow: none !important;
-    border: none !important;
+    background: none;
+    box-shadow: none ;
+    border: none ;
 }
 
 * {
@@ -95,9 +92,9 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: var(--light-bg);
-    color: var(--dark-text);
+    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(120deg, #0ff1ce 0%, #3700ff 50%, #ff0080 100%);
+    color: #fff ;
     line-height: 1.6;
 }
 
@@ -109,7 +106,6 @@ body {
 
 /* Navigation */
 nav {
-    background: white;
     box-shadow: var(--shadow);
     position: sticky;
     top: 0;
@@ -164,16 +160,14 @@ nav {
 .section-title {
     text-align: center;
     margin-bottom: 2rem;
-    color: var(--dark-text);
+    color: #fff ;
 }
 
 /* Cards */
 .card {
-    background: white;
-    border-radius: 10px;
-    box-shadow: var(--shadow);
-    padding: 2rem;
-    margin-bottom: 2rem;
+    background: none ;
+    color: #fff ;
+    box-shadow: none ;
 }
 
 .card-header {
@@ -225,68 +219,6 @@ select:focus {
 textarea {
     min-height: 120px;
     resize: vertical;
-}
-
-.radio-group {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-}
-
-.radio-option {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem 1rem;
-    border: 1px solid var(--border-color);
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.radio-option:hover {
-    background: var(--light-bg);
-}
-
-.radio-option input[type="radio"]:checked + label {
-    color: var(--primary-color);
-    font-weight: 500;
-}
-
-/* Buttons */
-.btn {
-    padding: 0.75rem 1.5rem;
-    border: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-decoration: none;
-    display: inline-block;
-    text-align: center;
-}
-
-.btn-primary {
-    background: var(--primary-color);
-    color: white;
-}
-
-.btn-primary:hover {
-    background: var(--primary-hover);
-}
-
-.btn-secondary {
-    background: #6c757d;
-    color: white;
-}
-
-.btn-secondary:hover {
-    background: #5a6268;
-}
-
-.btn:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
 }
 
 /* Results */
@@ -416,19 +348,15 @@ textarea {
 }
 
 .scam-type-card {
-    background: white;
-    border: 1px solid var(--border-color);
-    border-radius: 5px;
-    padding: 1.5rem;
-    margin-bottom: 1rem;
+    background: none ;
+    color: #fff ;
+    box-shadow: none ;
 }
 
 .history-item {
-    background: white;
-    border: 1px solid var(--border-color);
-    border-radius: 5px;
-    padding: 1rem;
-    margin-bottom: 1rem;
+    background: none ;
+    color: #fff ;
+    box-shadow: none ;
     cursor: pointer;
     transition: all 0.3s ease;
 }
