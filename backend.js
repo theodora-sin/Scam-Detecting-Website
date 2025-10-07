@@ -99,15 +99,6 @@ class ScamDetectionApp {
         }
         
         alertContainer.appendChild(alert);
-
-        // auto dismiss after 5 seconds
-        setTimeout(() => {
-            if (alert.parentNode) {
-                alert.remove();
-            }
-        }, 5000);
-    }
-
     escapeHtml(text) {
         const div = document.createElement('div');
         div.textContent = text;
@@ -131,3 +122,4 @@ document.addEventListener('DOMContentLoaded', () => {
     window.app = app; // debug access
     console.log('Ready');
 });
+
