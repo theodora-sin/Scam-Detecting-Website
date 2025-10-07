@@ -39,7 +39,7 @@ class ScamDetectionApp {
             screen.classList.remove('active');
         });
 
-        const target = document.getElementById(`${screenName}-screen`);
+        const target = document.getElementById(`${name}-screen`);
         if (target) {
             target.classList.add('active');
             
@@ -137,4 +137,5 @@ document.addEventListener('DOMContentLoaded', () => {
     
     console.log('Application ready!');
 });
+
 
