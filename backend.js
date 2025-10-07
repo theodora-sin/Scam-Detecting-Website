@@ -10,7 +10,7 @@ class ScamDetectionApp {
     }
 
     init() {
-        // Initialize screen controllers
+        //setup screens
         this.screens.start = new StartScreen(this);
         this.screens.main = new MainScreen(this);
         this.screens.education = new EducationScreen(this);
@@ -19,13 +19,14 @@ class ScamDetectionApp {
         this.showScreen('start');
         this.updateActiveNavigation();
         
-        console.log('Scam Detection App initialized successfully');
+        console.log('Scam Detection is ready.');
     }
 
     setupNavigation() {
+        // Navigation setup
         document.querySelectorAll('[data-screen]').forEach(element => {
-            element.addEventListener('click', (e) => {
-                e.preventDefault();
+            element.addEventListener('click', (evt) => {
+                evt.preventDefault();
                 const screen = element.getAttribute('data-screen');
                 this.showScreen(screen);
                 this.updateActiveNavigation();
@@ -33,39 +34,39 @@ class ScamDetectionApp {
         });
     }
 
-    showScreen(screenName) {
-        // Hide all screens
+    showScreen(name) {
         document.querySelectorAll('.screen').forEach(screen => {
             screen.classList.remove('active');
         });
 
-        // Show target screen
-        const targetScreen = document.getElementById(`${screenName}-screen`);
-        if (targetScreen) {
-            targetScreen.classList.add('active');
+        const target = document.getElementById(`${screenName}-screen`);
+        if (target) {
+            target.classList.add('active');
             
-            // Deactivate current screen
-            if (this.screens[this.currentScreen] && this.screens[this.currentScreen].deactivate) {
+            // cleanup old screen
+            if (this.screens[this.currentScreen]?.deactivate) {
                 this.screens[this.currentScreen].deactivate();
             }
             
-            this.currentScreen = screenName;
+            this.currentScreen = name;
             
             // Activate new screen
-            if (this.screens[screenName] && this.screens[screenName].activate) {
-                this.screens[screenName].activate();
+            if (this.screens[name] && this.screens[name].activate) {
+                this.screens[name].activate();
             }
         }
     }
 
     updateActiveNavigation() {
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.classList.remove('active');
+        // clear active states
+        document.querySelectorAll('.nav-link').forEach(lnk => {
+            lnk.classList.remove('active');
         });
 
-        document.querySelectorAll(`[data-screen="${this.currentScreen}"]`).forEach(link => {
-            if (link.classList.contains('nav-link')) {
-                link.classList.add('active');
+        // set current active
+        document.querySelectorAll(`[data-screen="${this.currentScreen}"]`).forEach(lnk => {
+            if (lnk.classList.contains('nav-link')) {
+                lnk.classList.add('active');
             }
         });
     }
@@ -74,16 +75,16 @@ class ScamDetectionApp {
         // Create alert element
         const alert = document.createElement('div');
         alert.className = `alert alert-${type}`;
-        alert.textContent = message;
+        alert.textContent = msg;
         
         // Add close button
-        const closeBtn = document.createElement('span');
+        const closeButtonn = document.createElement('span');
         closeBtn.innerHTML = '&times;';
         closeBtn.style.float = 'right';
         closeBtn.style.cursor = 'pointer';
-        closeBtn.style.marginLeft = '10px';
-        closeBtn.onclick = () => alert.remove();
-        alert.appendChild(closeBtn);
+        closeButtonn.style.marginLeft = '20px';
+        closeButtonn.onclick = () => alert.remove();
+        alert.appendChild(closeButtonn);
         
         // Add to alert container or body
         let alertContainer = document.getElementById('alert-container');
@@ -98,8 +99,8 @@ class ScamDetectionApp {
         }
         
         alertContainer.appendChild(alert);
-        
-        // Auto-remove after 5 seconds
+
+        // auto dismiss after 5 seconds
         setTimeout(() => {
             if (alert.parentNode) {
                 alert.remove();
@@ -112,26 +113,21 @@ class ScamDetectionApp {
         div.textContent = text;
         return div.innerHTML;
     }
-
-    // Utility methods for screens to use
     getCurrentScreen() {
         return this.currentScreen;
     }
 
-    getScreenController(screenName) {
-        return this.screens[screenName];
+    getScreenController(name) {
+        return this.screens[name];
     }
 }
 
+// global reference
 let app;
 
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('Initializing Scam Detection Application...');
+    console.log('Starting up...');
     app = new ScamDetectionApp();
-
-    window.app = app;
-    
-    console.log('Application ready!');
+    window.app = app; // debug access
+    console.log('Ready');
 });
-
-
